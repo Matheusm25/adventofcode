@@ -31,10 +31,14 @@ const rules = {
 };
 
 const score = parsedInput.reduce((acc, game) => {
+  const invertWin = game.expectedResult === 'win' ? 'lose' : 'win';
+  const mustPlay = Object.keys(rules[game.opponentChoice]).find(
+    key =>
+      rules[game.opponentChoice][key] ===
+      (game.expectedResult !== 'draw' ? invertWin : game.expectedResult),
+  ) as string;
   return (
-    acc +
-    rules[rules[game.yourChoice][game.opponentChoice]] +
-    rules[game.yourChoice].points
+    acc + rules[rules[mustPlay][game.opponentChoice]] + rules[mustPlay].points
   );
 }, 0);
 
