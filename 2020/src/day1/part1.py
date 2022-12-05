@@ -1,5 +1,3 @@
-import os.path
-
 input_file = open("./input.txt", "r")
 sample_input_file = open("sample-input.txt", "r")
 
