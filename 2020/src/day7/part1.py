@@ -11,7 +11,6 @@ bag_name = 'shiny gold'
 count = 0
 
 bag_rules = {}
-
     
 for rule in rules:
     [bag, contains] = re.sub(r" (bags|bag)", '', rule).split(' contain ')
@@ -26,16 +25,10 @@ def get_all_bags(bag):
         return inside_bags
     else:
         return []        
-    
-
-def check_if_has_bags(rule):
-    [bag, contains] = re.sub(r" (bags|bag)", '', rule).split(' contain ') if ' contain ' in rule else [rule, '']
-    inside_bags = get_all_bags(bag)
-    return bag_name in inside_bags
-    
 
 for rule in rules:
-    count += check_if_has_bags(rule)
-
+    [bag, contains] = re.sub(r" (bags|bag)", '', rule).split(' contain ') if ' contain ' in rule else [rule, '']
+    inside_bags = get_all_bags(bag)
+    count += bag_name in inside_bags
 
 print(count)
