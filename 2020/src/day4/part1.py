@@ -22,4 +22,3 @@ for document in documents:
         
 print(validCount)
     
-    
