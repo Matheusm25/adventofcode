@@ -40,7 +40,7 @@ async function increaseCycle() {
   printScreen();
   console.log(position.row, position.col);
   console.log(spritePosition);
-  await delay(50); // delay only to see the animation
+  process.argv[2] && (await delay(Number(process.argv[2]))); // delay only to see the animation
 
   if (position.col === 39) {
     position.col = 0;
